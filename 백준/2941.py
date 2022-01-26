@@ -25,6 +25,5 @@ for i in range(1,l) :
         l -= 1 
     if data[i-1:i+2] == unique[7] :
         l -= 1 
-
         
 print(l)
