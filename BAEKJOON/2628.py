@@ -8,13 +8,21 @@ for decision in lst :
     else : 
         b += 1 
 
-board = [[0 for j in range(b)] for i in range(a)] # 그리드 만들기
+board = [[1 for j in range(a)] for i in range(b)] # 그리드 만들기
 
+k = 0 
+l = 0
+lst.sort()
 for decision in lst :
     if decision[0] == 0 :
-        for i in range(b) :
-            board[decision[1]][i] = 1 
-    else :
         for i in range(a) :
-            board[i][decision[1]] = 1
-pprint.pprint(board)
+            board[decision[1]+k][i] = 0 
+        k += 1 
+    else :
+        for i in range(b) :
+            board[i][decision[1]+l] = 0
+        l+=1
+
+i,j = 0,0
+while board[i][j] ==0 :
+    pass

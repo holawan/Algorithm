@@ -9,7 +9,8 @@ for i in range(data,0,-1) :
         lst.append(etc)
         first = second
         second = etc
-        etc = first - second 
+        etc = first - second
+        
     cnt_n = len(lst)
     if cnt_n > cnt :
         cnt = cnt_n
