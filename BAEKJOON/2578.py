@@ -12,8 +12,16 @@ bingo.append(bingo4)
 lst = []
 for i in range(5) :
     lst += list(map(int,input().split()))
-j = 0
-while n !=3 :
-    for b in bingo :
-        if bingo in lst[0:j] :
-            pass
+n = 0
+for i in lst :
+    n +=1
+    cnt = 0
+    for j in bingo :
+        if i in j :
+            j.remove(i)
+        if j == [] :
+            cnt +=1
+    pprint(bingo) 
+    if cnt == 3:
+        break
+print(n)    
