@@ -1,11 +1,9 @@
 n = int(input())
-s = 6
 a = 1 
 i = 1
 while bool(n <= i)==False :
-    print(i)
-    i = 1 + s 
-    s = a*s
+    s = a*6
     a +=1
- 
-#print(a-1)
+    i += s
+
+print(a)
