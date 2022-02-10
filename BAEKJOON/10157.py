@@ -11,6 +11,8 @@ lst2 = []
 for i in lst :
     if i<R :
         lst2.append([1,i])
-    elif i<C+R+1 :
+    elif i<C+R-1 :
         lst2.append([i-C+2,R])
+    elif i<2*(R)- C-1 :
+        lst2.append()
 print(lst2)

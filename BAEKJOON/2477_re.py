@@ -1,6 +1,5 @@
 melon = 7
-values = [input().split() for _ in range(6)] # 나머지 2~7 line의 6 줄을 입력 받는다.
-print(values)
+values = [[4,50],[2,160],[3,30],[1,60],[3,20],[1,100]]
 directions = [int(v[0]) for v in values] # 방향을 뽑아내서 저장한다.
 lengths = [int(v[1]) for v in values] # 길이를 뽑아내서 저장한다.
 max_lengths, box_lengths = [], [] # 큰 박스의 길이, 작은 박스의 길이를 담을 배열
