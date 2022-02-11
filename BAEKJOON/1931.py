@@ -1,17 +1,18 @@
-import sys
-n = int(sys.stdin.readline())
-lst = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
-lst.sort()
+n = int(input())
+room = []
 
-lst2 = [0]
-for i in range(len(lst)) :
-    x = 1
-    ax = lst[i][1]
-    if len(lst)-i+1 <= max(lst2) :
-        break
-    for j in range(i+1,len(lst)) :
-        if ax <= lst[j][0] :
-            x += 1
-            ax = lst[j][1]
-    lst2.append(x)
-print(max(lst2))
+for i in range(n):
+    a, b = map(int, input().split())
+    room.append([a, b])
+
+room.sort(key = lambda x: x[0])
+room.sort(key = lambda x: x[1])
+print(room)
+cnt = 1
+end = room[0][1]
+for i in range(1, n):
+    if room[i][0] >= end:
+        cnt += 1
+        end = room[i][1]
+
+print(cnt)
