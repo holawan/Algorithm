@@ -1,6 +1,3 @@
-from tkinter import N
-
-
 n = int(input())
 lst = []
 for i in range(n):

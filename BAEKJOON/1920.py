@@ -10,10 +10,11 @@ def func(b,d) :
             if i == num :
                 return 1
     return 0
+print()
 
-for num in list(map(int,sys.stdin.readline().split())) :
-    for i in N_lst : 
-        if i == num :
-            print(1)
-            continue
-    print(0)
+# for num in list(map(int,sys.stdin.readline().split())) :
+#     for i in N_lst : 
+#         if i == num :
+#             print(1)
+#             continue
+#     print(0)
