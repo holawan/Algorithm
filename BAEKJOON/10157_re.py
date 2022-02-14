@@ -1,25 +1,28 @@
-def snail(n):
-    arr = [[0 for j in range(n)] for i in range(n)] #1
-    row = 0 #2
-    col = -1 #2
-    cnt = 1 #3
-    trans = 1 #4
-    while n > 0: #5
-        for j in range(n): #6
-            col += trans
-            arr[row][col] = cnt
-            cnt += 1
-        n -= 1 #7
-        for i in range(n): #8
-            row += trans
-            arr[row][col] = cnt
-            cnt += 1
-        trans *= -1 #9
-    return arr
+C,R = map(int,input().split())
+my_seat = int(input())
+if my_seat > C*R :
+    print(0)
+    exit()
+dx = [0,1,0,-1]
+dy = [-1,0,1,0]
 
 
-arr = snail(4)
-for i in arr:
-    for j in i:
-        print('%5d' %j , end=' ')
-    print()
+grid = [[0]*C for _ in range(R)]
+direction = x= y = 0
+
+for seat in range(1,C*R+1) :
+    if seat == my_seat:
+        print(y+1,x+1)
+        break
+    else :
+        grid[x][y] = seat
+        x += dx[direction]
+        y += dy[direction]
+
+        if x<0 or y<0 or x>=R or y>=C or grid[x][y]:
+            x -= dx[direction]
+            y -= dy[direction]
+
+            direction = (direction+1)%4
+            x += dx[direction]
+            y += dy[direction]
