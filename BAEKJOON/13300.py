@@ -1,9 +1,6 @@
 n ,room = map(int,input().split())
 
 lst = list([] for _ in range(12))
-print(lst)
-print([]*12)
-exit()
 
 for i in range(n) :
     sex,grade = map(int,input().split())
