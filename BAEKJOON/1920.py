@@ -2,19 +2,26 @@ import sys
 n = int(sys.stdin.readline())
 N_lst = list(map(int,sys.stdin.readline().split()))
 m = int(sys.stdin.readline())
+M_lst = list(map(int,sys.stdin.readline().split()))
 
+N_lst.sort()
 
-def func(b,d) :
-    for num in d :
-        for i in b :
-            if i == num :
-                return 1
-    return 0
-print()
+def binary_search(x) :
+    start = 0
+    end = n-1 
 
-# for num in list(map(int,sys.stdin.readline().split())) :
-#     for i in N_lst : 
-#         if i == num :
-#             print(1)
-#             continue
-#     print(0)
+    while start <= end :
+        mid = (start+end)//2
+        
+        if N_lst[mid] == x :
+            return True
+        
+        elif x <N_lst[mid] :
+            end = mid -1
+
+        else :
+            start = mid +1
+    return False 
+
+for x in M_lst :
+    print(int(binary_search(x)))
