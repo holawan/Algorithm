@@ -1,9 +1,9 @@
 x,y = map(int,input().split())
 num = int(input())
-stores = [list(map(int,input().split())) for i in range(num+1)]
+stores = [list(map(int,input().split())) for i in range(num+1)] #상근이까지 
 
 
-for store in stores :
+for store in stores : 
     if store[0] == 1 :
         store[0] = store[1]
         store[1] = y
