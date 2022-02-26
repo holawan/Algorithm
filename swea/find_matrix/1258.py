@@ -10,45 +10,51 @@
 # sys.stdin = open('input.txt','r')
 
 T = int(input())
-# for t in range(1,T+1) :
-n = int(input())
+for t in range(1,2+1) :
+    n = int(input())
 
-grid = [list(map(int,input().split())) for _ in range(n)]
+    grid = [list(map(int,input().split())) for _ in range(n)]
+    #결과를 담을 리스트
+    res = []
 
-res = []
-
-for r in range(n) :
-    for c in range(n) :
-        if grid[r][c] :
-            x = r
-            y = c 
+    #행렬을 돌며
+    for r in range(n) :
+        for c in range(n) :
+            #값이 있으면 x,y의 초기값으로 설정 
+            if grid[r][c] :
+                x = r
+                y = c 
             
-            max_r = 0
-            max_c = 0
+            #행의 길이, r의 길이 초기값
+                len_r = 0
+                len_c = 0
+            #열을 순회하며 범위 내면서, 값이 있으면 y를 증가시킴 
+                while 0<=y<n and grid[x][y] :
+                    y += 1
+            #열 최대값 저장
+                len_c = y-1 
+            #행을 순회하며 범위 내면서, 값이 있으면 x를 증가시킴
+                while 0<=x<n and grid[x][len_c] :
+                    x += 1 
+                len_r = x-1 
 
-            while 0<=y<n and grid[x][y] :
-                y += 1
-            max_c = y-1 
+            #지나온 값은 0으로 변경
+                for k in range(r,x) :
+                    for m in range(c,y) :
+                        grid[k][m] = 0 
+            #결과에 저장
+                res.append((len_r-r+1,len_c-c+1))
 
-            while 0<=x<n and grid[x][max_c] :
-                x += 1 
-            max_r = x-1 
+    print(res)
+    matrix = []
+    for r,c in res :
+        matrix.append([r*c,r,c])
+    matrix.sort()
+            
 
-            for k in range(r,x) :
-                for m in range(c,y) :
-                    grid[k][m] = 0 
-            res.append((max_r-r+1,max_c-c+1))
-            for i in grid :
-                print(i)
-            print('------------------------')
-print(res)
-# matrix = []
-# for r,c in res :
-#     matrix.append([r*c,r,c])
-# matrix.sort()
-# print(matrix)            
-
-# print(f'#{T} {len(matrix)}',end='')
-# for i in range(len(matrix)) :
-#     print(matrix[i][1],matrix[i][2],end='')
-# print()
+    #행렬의 개수 출력 
+    print(f'#{t} {len(matrix)}',end=' ')
+    #크기가 낮은 순으로 출력 
+    for i in matrix :
+        print(i[1],i[2],end=' ')
+    print()
