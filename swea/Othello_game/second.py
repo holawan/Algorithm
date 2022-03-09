@@ -39,10 +39,10 @@ for t in range(1,T+1) :
                     grid[x][y] = 'b'
                 #흑돌의 주변 경우의 수를 모두 돌면서(+1된 경우 제외)  
                 for i in range(8) :
-                    #상하좌우, 대각 4개를 탐색 
+                    #상하좌우, 대각 4개를 탐색
                     for k in range(n-1,1,-1) :
                         #상하좌우로 x+k씩 탐색하며(k의 최소값은 2이므로 자신과 직접 닿아있는 부분 제외)
-                        #new_k로 둔다. 
+                        #new_k로 둔다.
                         new_x = x+dr[i]*k ;new_y = y+dc[i]*k 
                         #범위 안에 있고, grid[new_x][new_y]가 같은 색이면 
                         if 0<=new_x<n and 0<=new_y<n and grid[new_x][new_y] == 'b':
