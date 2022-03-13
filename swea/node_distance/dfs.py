@@ -1,3 +1,8 @@
+import sys 
+
+sys.stdin = open('input.txt','r')
+
+
 def dfs(x) :
     visted[x] = 1 
     for i in range(1,V+1) :
