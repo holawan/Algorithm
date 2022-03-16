@@ -11,7 +11,7 @@ while res > num :
     else :
         res = res//2
     cnt +=1
-    if int(res) == num :
+    if res == num :
         break
 
 if res==num :
