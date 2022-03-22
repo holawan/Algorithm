@@ -6,7 +6,7 @@ sys.stdin = open('input.txt','r')
 
 T = int(input())
 
-for tc in range(1,T+1) : 
+for tc in range(1,3) : 
     #N = 접수창구 개수, M = 정비 창구 개수, K = 고객 수, A =target의 접수, B = target의 정비
     N, M, K, A , B = map(int,input().split())
 
@@ -16,6 +16,10 @@ for tc in range(1,T+1) :
     b = list(map(int,input().split()))
     #고객이 차량정비소를 방문하는 시간 t -> K개
     t = list(map(int,input().split()))
+
+    print(N,M,K,A,B,a,b,t)
+
+
     t_idx = 0
     len_t = len(t)
 
@@ -34,14 +38,11 @@ for tc in range(1,T+1) :
     repair_wating_line = []
     time = 0
 
-
-    flag =True 
-
-    while flag :
+    while True :
         #정비가 끝났으면 끝
         for i in range(M) :
             if repair_desks[i] != -1 and repair_desks[i][1] == 0 :
-                repair_desks[i] == -1
+                repair_desks[i] = -1
         # 접수창구에서 나오면 정비창구대기열로 
         for i in range(N) :
             if reception_desks[i] != -1 and reception_desks[i][1] == 0 :
@@ -82,7 +83,7 @@ for tc in range(1,T+1) :
                 if visitor_info[i][1] == -1 :
                     break
             else :
-                flag = False
+                break
         
     ans = 0
 

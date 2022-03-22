@@ -5,15 +5,11 @@ sys.stdin = open('input.txt','r')
 T = int(input())
 
 for t in range(1,T+1) : 
-    #
     E,root = map(int,input().split())
-
-    # parent = [[_] for _ in range(E+1)]
-    
+    # parent = [[_] for _ in range(E+1)]    
     #자식노드 리스트 만들기
     c1 = [0]*(E+2)
     c2 = [0]*(E+2)
-
     #부모자식 쌍 받아오기
     lst = list(map(int,input().split()))
     
@@ -25,7 +21,8 @@ for t in range(1,T+1) :
             c1[a] = b 
         else :
             c2[a] = b 
-
+    print(c1)
+    print(c2)
     #연결 수 나를 포함해야해서 1부터 시작 
     cnt = 1
     def find(c1,c2,root) :
@@ -38,4 +35,4 @@ for t in range(1,T+1) :
             cnt += 1 
             find(c1,c2,c2[root])
     find(c1,c2,root)
-    print(f'#{t} {cnt}')
+    print(f'#{t} {cnt}') 
