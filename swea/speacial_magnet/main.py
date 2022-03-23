@@ -26,29 +26,29 @@ def dfs(i) :
             if i<new_i :
                 if m_lst[i][2] != m_lst[new_i][-2] :
                     m_lst[new_i] = m_lst[new_i][1:] + [m_lst[new_i][0]]
-                    dfs(new_i)
                 else :
                     return
             else :
                 if m_lst[i][-2] != m_lst[new_i][2] :
                     m_lst[new_i] = m_lst[new_i][1:] + [m_lst[new_i][0]]
-                    dfs(new_i)
                 else :
                     return
-
+print(m_lst)
 for k in range(K) :
     rotation_num , dir = map(int,input().split())
     rotation_num -= 1 
-    visited  =[0]*4
-    visited[rotation_num] = 1
-    dfs(rotation_num) 
+    lst = []
+    for i in range(3) :
+        if m_lst[i][2] != m_lst[i+1][-2] :
+            lst.append(i)
+        else :
+            break
+    for i in lst :
+        m_lst[i+1] = m_lst[i+1][1:] + [m_lst[i+1][0]]
     if dir == 1 :
         m_lst[rotation_num] = [m_lst[rotation_num][-1]] + m_lst[rotation_num][:7]
-        print(f'k:{m_lst}')
     else :
         m_lst[rotation_num] = m_lst[rotation_num][1:] + [m_lst[rotation_num][0]]
-        print(f'k:{m_lst}')
-        print(1)
 
 for i in range(4) :
     if m_lst[i][0] == 1 :
