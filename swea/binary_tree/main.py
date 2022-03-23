@@ -19,8 +19,7 @@ if n%2==0 :
     
     if dic[n]>dic[n//2] :
         dic[n//2],dic[n] = dic[n],dic[n//2]
-    print(dic)
-    heap(n)
+
     # for i in range(n-1,1,-2) :
     #     print(dic)
     #     heap(i)
