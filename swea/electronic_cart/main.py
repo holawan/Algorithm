@@ -43,10 +43,13 @@ for t in range(1,T+1) :
         for j in range(len(part[i])-1) :
             #방을 돌면서 전력 사용량 더해주기 
             res += grid[part[i][j]][part[i][j+1]]
+            if res>ans :
+                break
         #사무실에서 첫번째 방 더하기 
-        res += grid[0][part[i][0]]
-        #마지막 방에서 사무실 더하기 
-        res += grid[part[i][-1]][0]
+        else :
+            res += grid[0][part[i][0]]
+            #마지막 방에서 사무실 더하기 
+            res += grid[part[i][-1]][0]
         #최소 전력량 구하기 
         if res <ans :
             ans =res 
