@@ -33,7 +33,7 @@ def check_bcs():
  
                 visited[nr][nc] = True
                 que.append((nr, nc, cl + 1))
- 
+
 
  
 def get_result(a_bcs, b_bcs):
@@ -53,10 +53,10 @@ def get_result(a_bcs, b_bcs):
             #b 돌면서 
             for bc in b_bcs:
 
-                #둘이 위치가 같으면 반절씩 나눠서 가지기 
+                #둘이 배터리가 같으면 반절씩 나눠서 가지기 
                 if ac == bc:
                     result = max(BCs[ac][3], result)
-                #둘이 위치가 다르면 각자의 위치에 배터리로 충전하기 
+                #둘이 배터리가 다르면 각자의 위치에 배터리로 충전하기 
                 else:
                     result = max(BCs[ac][3] + BCs[bc][3], result)
     return result
@@ -78,7 +78,7 @@ def move():
         #이동시키기 
         ar, ac = ar + ad[0], ac + ad[1]
         br, bc = br + bd[0], bc + bd[1]
-    #리스트 정렬 
+    #리스트 정렬
     a_bcs = grid[ar][ac][:]
     b_bcs = grid[br][bc][:]
     result += get_result(a_bcs, b_bcs)
