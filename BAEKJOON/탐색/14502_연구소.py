@@ -17,8 +17,6 @@ for i in range(n) :
         elif grid[i][j] == 2 :
             virus.append((i,j))
 
-
-
 dx = [0,1,0,-1]
 dy = [1,0,-1,0]
 

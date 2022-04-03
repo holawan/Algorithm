@@ -1,10 +1,7 @@
 from collections import deque 
 
-
 n, m = map(int,input().split())
-
 jump = {}
-
 for _ in range(n+m) :
     i,j = map(int,input().split())
     jump[i] = j 

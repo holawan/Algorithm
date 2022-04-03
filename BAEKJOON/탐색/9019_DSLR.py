@@ -10,7 +10,7 @@ for _ in range(int(input())):
     
     while q:
         num, path = q.popleft()
-        visit[num] = True
+        visit[num] = 1
         if num == B:
             print(path)
             break
