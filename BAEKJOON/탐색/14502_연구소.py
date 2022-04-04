@@ -1,56 +1,60 @@
 from collections import deque
-import itertools
+
 n,m = map(int,input().split())
 
 grid = [list(map(int,input().split())) for _ in range(n)]
 
-empty = []
-walls = []
+wall = []
 virus = []
+road  = []
+
+dr = [0,1,0,-1]
+dc = [1,0,-1,0]
 
 for i in range(n) :
     for j in range(m) :
         if grid[i][j] == 0 :
-            empty.append((i,j))
+            road.append((i,j))
         elif grid[i][j] == 1 :
-            walls.append((i,j))
-        elif grid[i][j] == 2 :
+            wall.append((i,j))
+        else :
             virus.append((i,j))
 
-dx = [0,1,0,-1]
-dy = [1,0,-1,0]
+sub_wall = []
 
-tmp_walls =list(itertools.combinations(empty,3))
+l = len(road)
 
-res = 0
-for candidate_wall in tmp_walls :
-
-    for i,j in candidate_wall :
-        grid[i][j]= 1 
+for i in range(l-2) :
+    for j in range(i+1,l-1) :
+        for k in range(j+1,l) :
+            sub_wall.append((road[i],road[j],road[k]))
 
 
-    q = deque(virus)
+ans = 0 
 
-    visited= set()
-
+for w in sub_wall :
+    for _ in range(3) :
+        grid[w[_][0]][w[_][1]] = 1 
+    visited = set()
+    q = deque(virus[:])
     while q :
-        x,y, = q.popleft()
-        visited.add((x,y))
+        cr,cc = q.popleft()
+        visited.add((cr,cc))
         for d in range(4) :
-            nx = x + dx[d]
-            ny = y + dy[d]
-            if 0<=nx<n and 0<=ny<m and (nx,ny) not in visited and grid[nx][ny] == 0 :
+            nr = cr + dr[d]
+            nc = cc + dc[d]
+
+            if 0<=nr<n and 0<=nc<m and not (nr,nc) in visited and  grid[nr][nc] ==0: 
+                q.append((nr,nc))
+
+    v = len(visited)
+    tmp_res = n*m - len(wall) - v -3 
+    if tmp_res > ans :
+        ans = tmp_res
+    for _ in range(3) :
+        grid[w[_][0]][w[_][1]] = 0
                 
-                q.append((nx,ny))
+print(ans)
 
-    infected = len(visited)
-
-    tmp_res = n*m - len(walls) - infected - 3
-
-    if res<tmp_res :
-        res = tmp_res
-
-    for i,j in candidate_wall :
-        grid[i][j] = 0
-
-print(res)
+        
+    
