@@ -1,0 +1,5 @@
+A,B,N = map(int,input().split())
+print(A/B)
+X = divmod(A,B)
+print(X)
+print(divmod(X[0],X[1]))

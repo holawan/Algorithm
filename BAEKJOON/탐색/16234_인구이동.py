@@ -7,7 +7,8 @@ def func(x,y) :
     else :
         return False
 
-def bfs(r,c,visited) :
+
+def bfs(r,c) :
     #최종 인구 합 
     res = grid[r][c]
     #큐 만들기 
@@ -31,33 +32,7 @@ def bfs(r,c,visited) :
     #인접국가 길이와, 국가 합, 인접국가 리스트 리턴 
     return len(div_city),res,div_city
 
-def func2(N) :
-    #날짜를 표시할 cnt 
-    global cnt 
-    while True :
-        #방문배열 
-        visited = [[0]*N for _ in range(N)]
-        #추후 인구를 재정렬할 리스트 
-        lst = []
-        #그리드를 돌면서 
-        for r in range(N) :
-            for c in range(N) :
-                #bfs를 돌고 길이,인구합,인접국가리스트 리턴 
-                l,res,d = bfs(r,c,visited)
-                #길이가 1보다 크면 재정렬 리스트에 포함 
-                if l > 1 :
-                    lst.append((res,d))
-        #재정렬 리스트가 비어있으면 더이상 움직일 수 없으니까 끝내기 
-        if lst == [] :
-            return 
-        #재정렬 리스트가 있으면 재정렬 리스트를 돌면서 인구 재조정 
-        for i in range(len(lst)) :
-            #d = 인구 합 // 국가수 
-            d = lst[i][0]//len(lst[i][1])
-            for r,c in lst[i][1] :
-                grid[r][c] = d
-        #while문 끝날때마다 날짜 하루씩 추가 
-        cnt += 1 
+
 
 N,L,R = map(int,input().split())
 
@@ -68,5 +43,29 @@ dc = [1,0,-1,0]
 
 cnt = 0
 
-func2(N)
+cnt = 0
+while True :
+    #방문배열 
+    visited = [[0]*N for _ in range(N)]
+    #추후 인구를 재정렬할 리스트 
+    lst = []
+    #그리드를 돌면서 
+    for r in range(N) :
+        for c in range(N) :
+            #bfs를 돌고 길이,인구합,인접국가리스트 리턴 
+            l,res,d = bfs(r,c)
+            #길이가 1보다 크면 재정렬 리스트에 포함 
+            if l > 1 :
+                lst.append((res,d))
+    #재정렬 리스트가 비어있으면 더이상 움직일 수 없으니까 끝내기 
+    if lst == [] :
+        break 
+    #재정렬 리스트가 있으면 재정렬 리스트를 돌면서 인구 재조정 
+    for i in range(len(lst)) :
+        #d = 인구 합 // 국가수 
+        d = lst[i][0]//len(lst[i][1])
+        for r,c in lst[i][1] :
+            grid[r][c] = d
+    #while문 끝날때마다 날짜 하루씩 추가 
+    cnt += 1 
 print(cnt)
