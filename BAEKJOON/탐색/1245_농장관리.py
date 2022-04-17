@@ -43,5 +43,6 @@ for i in range(n):
             # 산봉우리이면 카운트
             if x:
                 cnt += 1
+                print(i,j)
 
 print(cnt)
