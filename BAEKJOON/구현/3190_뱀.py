@@ -64,7 +64,7 @@ while True :
         snake.appendleft((cr,cc))
         #몸 한 칸 늘려서 맨 앞에 추가 
         snake.appendleft((nr,nc))
-        #맨 뒤에 없애기 
+        #꼬리 뒤에 없애기 
         snake.pop()
 
     time += 1
