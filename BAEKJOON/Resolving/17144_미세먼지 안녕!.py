@@ -42,29 +42,29 @@ while True :
             grid[cr][cc] = grid[cr][cc]-(plus*cnt)
     stack = new_stack 
 
-    # upr,upc = up.pop()
+    upr,upc = up.pop()
 
-    # nr = upr+dr[us]
-    # nc = upc+dc[us]
-    # if nr<0 or nr>(R-1) or nc<0 or nc>(R-1) :
-    #     nr -= (upr+dr[us])
-    #     nc -= (upc+dc[us])
-    #     us = (us+1)%4 
-    #     nr += upr[0]+dr[us]
-    #     nc += upc[1]+dc[us]
-    # up.append((nr,nc))
+    nr = upr+dr[us]
+    nc = upc+dc[us]
+    if nr<0 or nr>(R-1) or nc<0 or nc>(R-1) :
+        nr -= (upr+dr[us])
+        nc -= (upc+dc[us])
+        us = (us+1)%4 
+        nr += upr[0]+dr[us]
+        nc += upc[1]+dc[us]
+    up.append((nr,nc))
 
-    # downr,downc = down.pop()
+    downr,downc = down.pop()
 
-    # nr = downr+dr[ds]
-    # nc = downc+dc[ds]
-    # if nr<0 or nr>(R-1) or nc<0 or nc>(R-1) :
-    #     nr -= (downr+dr[ds])
-    #     nc -= (downc+dc[ds])
-    #     ds = (ds+1)%4 
-    #     nr += downr+dr[ds]
-    #     nc += downc+dc[ds]
-    # down.append((nr,nc))
+    nr = downr+dr[ds]
+    nc = downc+dc[ds]
+    if nr<0 or nr>(R-1) or nc<0 or nc>(R-1) :
+        nr -= (downr+dr[ds])
+        nc -= (downc+dc[ds])
+        ds = (ds+1)%4 
+        nr += downr+dr[ds]
+        nc += downc+dc[ds]
+    down.append((nr,nc))
     
     time += 1 
 
@@ -79,3 +79,4 @@ print(empty)
 
 for r in grid :
     print(r)
+
