@@ -6,6 +6,8 @@ grid = [list(map(int,input().split())) for _ in range(R)]
 
 dr = [0,-1,0,1]
 dc = [1,0,-1,0]
+
+
 dr2 = [0,1,0,-1]
 dc2 = [1,0,-1,0]
 
