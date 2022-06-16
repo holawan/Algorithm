@@ -44,7 +44,6 @@ for r in range(N) :
             for d in range(4) :
                 nr = r + dr[d]
                 nc = c + dc[d]
-
                 #섬이 아니고 방문하지 않았으면 해당 바다(?)에서 출발한다. 
                 if 0<=nr<N and 0<=nc<N and grid[nr][nc] ==0 :
                     #방문배열에 넣고 
@@ -61,6 +60,7 @@ for r in range(N) :
                         #꺼내고 
                         
                         cr,cc = q.popleft()
+            
                         if visited[cr][cc] > bridge :
                             break
                         #아직 바다이면 4방향 돌면서 
@@ -83,9 +83,4 @@ for r in range(N) :
                                         # print(bridge)
                                         # print(cr,cc)
                                         x = 1 
-# for i in grid :
-#     print(i)
-# print('--------------------------')
-# for i in visited :
-#     print(i)
 print(bridge)
